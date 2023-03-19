@@ -1,8 +1,10 @@
 const express = require('express');
 const mysql = require('mysql');
 const myconnection = require('express-myconnection');
-
+//npm run start en server/
 const app = express();
+const cors = require('cors');
+
 
 app.use(myconnection(mysql,
     {
@@ -14,6 +16,7 @@ app.use(myconnection(mysql,
     }    
 ));
 
+app.use(cors());
 app.use(require('./routes/routes'));
 
 app.listen(9000, ()=> {
